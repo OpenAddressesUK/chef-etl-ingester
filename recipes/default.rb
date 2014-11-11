@@ -47,3 +47,8 @@ execute 'grab ONSPD data' do
   cwd '/home/openaddresses/etl/common-ETL'
   command 'python ONSPD_download.py'
 end
+
+cookbook_file "oa_alpha_etl.cnf" do
+  path "/home/openaddresses/etl/common-ETL/oa_alpha_etl.cnf"
+  action :create
+end

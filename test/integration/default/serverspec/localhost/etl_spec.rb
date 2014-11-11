@@ -50,6 +50,14 @@ describe command 'mysql commonetldb -e "show tables"' do
   its(:stdout) { should match /Posttowns/ }
 end
 
+describe file '/home/openaddresses/etl/common-ETL/oa_alpha_etl.cnf' do
+  it { should be_file }
+  its(:content) { should match /hostname=localhost/ }
+  its(:content) { should match /database=commonetldb/ }
+  its(:content) { should match /username=root/ }
+  its(:content) { should match /password=\n/ }
+end
+
 describe file '/home/openaddresses/etl/common-ETL/OS_Locator2014_2_OPEN_xad.txt' do
   it { should be_file }
 end
