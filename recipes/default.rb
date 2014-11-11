@@ -1,4 +1,5 @@
 package 'git'
+package 'mariadb-server'
 package 'python-mysqldb'
 
 oa_user = 'openaddresses'
@@ -26,4 +27,13 @@ end
     repository 'https://github.com/OpenAddressesUK/%s' % etl
     action :sync
   end
+end
+
+execute 'create database' do
+  command 'mysql -e "create database if not exists commonetldb"'
+end
+
+execute 'run sql' do
+  cwd '/home/openaddresses/etl/common-ETL'
+  command 'mysql commonetldb < oa_alpha_etl.sql'
 end

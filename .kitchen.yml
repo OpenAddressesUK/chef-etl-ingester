@@ -11,10 +11,5 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[mariadb-proxy::default]
       - recipe[etl-ingester::default]
     attributes:
-      mariadb:
-        server_root_password: 'iloverandompasswords'
-        server_repl_password: 'iloverandompasswords'
-        server_debian_password: 'iloverandompasswords'
