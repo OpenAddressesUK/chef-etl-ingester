@@ -49,3 +49,11 @@ describe command 'mysql commonetldb -e "show tables"' do
   its(:stdout) { should match /ONSPD_Changes/ }
   its(:stdout) { should match /Posttowns/ }
 end
+
+describe file '/home/openaddresses/etl/common-ETL/OS_Locator2014_2_OPEN_xad.txt' do
+  it { should be_file }
+end
+
+describe file '/home/openaddresses/etl/common-ETL/ONSPD_AUG_2014.csv' do
+  it { should be_file }
+end

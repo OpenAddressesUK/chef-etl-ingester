@@ -37,3 +37,13 @@ execute 'run sql' do
   cwd '/home/openaddresses/etl/common-ETL'
   command 'mysql commonetldb < oa_alpha_etl.sql'
 end
+
+execute 'grab OS Locator data' do
+  cwd '/home/openaddresses/etl/common-ETL'
+  command 'python OS_Locator_download.py'
+end
+
+execute 'grab ONSPD data' do
+  cwd '/home/openaddresses/etl/common-ETL'
+  command 'python ONSPD_download.py'
+end
