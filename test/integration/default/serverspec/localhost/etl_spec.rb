@@ -65,3 +65,19 @@ end
 describe file '/home/openaddresses/etl/common-ETL/ONSPD_AUG_2014.csv' do
   it { should be_file }
 end
+
+describe command 'mysql -e "SELECT COUNT(*) FROM commonetldb.OS_Locator"' do
+  its(:stdout) { should match /[0-9]{6,}/ }
+end
+
+describe command 'mysql -e "SELECT COUNT(*) FROM commonetldb.ONSPD"' do
+  its(:stdout) { should match /[0-9]{7,}/ }
+end
+
+describe command 'mysql -e "SELECT COUNT(*) FROM commonetldb.ONSPD_Changes"' do
+  its(:stdout) { should match /[0-9]{6,}/ }
+end
+
+describe command 'mysql -e "SELECT COUNT(*) FROM commonetldb.Posttowns"' do
+  its(:stdout) { should match /[0-9]{4,}/ }
+end

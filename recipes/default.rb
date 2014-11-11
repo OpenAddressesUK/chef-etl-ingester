@@ -52,3 +52,18 @@ cookbook_file "oa_alpha_etl.cnf" do
   path "/home/openaddresses/etl/common-ETL/oa_alpha_etl.cnf"
   action :create
 end
+
+execute 'ETL OS Locator' do
+  cwd '/home/openaddresses/etl/common-ETL'
+  command 'python OS_Locator_ETL.py'
+end
+
+execute 'ETL ONSPD' do
+  cwd '/home/openaddresses/etl/common-ETL'
+  command 'python ONSPD_ETL.py'
+end
+
+execute 'ETL Post towns' do
+  cwd '/home/openaddresses/etl/common-ETL'
+  command 'python OA_Posttowns.py'
+end
