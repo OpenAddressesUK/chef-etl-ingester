@@ -56,6 +56,7 @@ describe file '/home/openaddresses/etl/common-ETL/oa_alpha_etl.cnf' do
   its(:content) { should match /database=commonetldb/ }
   its(:content) { should match /username=root/ }
   its(:content) { should match /password=\n/ }
+  its(:content) { should match /token=thisisakey/ }
 end
 
 describe file '/home/openaddresses/etl/common-ETL/OS_Locator2014_2_OPEN_xad.txt' do
@@ -80,4 +81,8 @@ end
 
 describe command 'mysql -e "SELECT COUNT(*) FROM commonetldb.Posttowns"' do
   its(:stdout) { should match /[0-9]{4,}/ }
+end
+
+describe file '/home/openaddresses/etl/common-ETL/BasicCompanyData-2014-11-01-part5_5.csv' do
+  it { should be_file }
 end
