@@ -15,3 +15,4 @@ suites:
     run_list:
       - recipe[etl-ingester::default]
     attributes:
+      ernest_api_key: thisisakey
