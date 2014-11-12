@@ -48,8 +48,11 @@ execute 'grab ONSPD data' do
   command 'python ONSPD_download.py'
 end
 
-cookbook_file "oa_alpha_etl.cnf" do
-  path "/home/openaddresses/etl/common-ETL/oa_alpha_etl.cnf"
+template '/home/openaddresses/etl/common-ETL/oa_alpha_etl.cnf' do
+  source 'oa_alpha_etl.cnf.erb'
+  variables({
+    api_key: node['ernest_api_key']
+    })
   action :create
 end
 
@@ -66,4 +69,9 @@ end
 execute 'ETL Post towns' do
   cwd '/home/openaddresses/etl/common-ETL'
   command 'python OA_Posttowns.py'
+end
+
+execute 'Companies House downloader' do
+  cwd '/home/openaddresses/etl/common-ETL'
+  command 'python CH_download.py'
 end
