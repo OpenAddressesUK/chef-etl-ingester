@@ -75,3 +75,8 @@ execute 'Companies House downloader' do
   cwd '/home/openaddresses/etl/common-ETL'
   command 'python CH_download.py'
 end
+
+execute 'Actual Ingestion' do
+  cwd '/home/openaddresses/etl/common-ETL'
+  command 'python CH_Bulk_Extractor.py .'
+end
